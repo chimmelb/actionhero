@@ -156,7 +156,7 @@ The properties of an input are:
   - should return `true` if validation passed
   - should return an error message if validation fails which will be returned to the client
   
-These methods cascade in the order: `default` --> `formatter` --> `validator` --> `required` (check). Meaning, a default value will be formatted, a formatted value will be validated, these will occur if the value is required or not.   
+These methods cascade in the order: `default` --> `formatter` --> `validator` --> `required` (check). Meaning, a default value will be formatted, a formatted value will be validated, and these will occur if the value is required or not.
 
 You can define `api.config.general.missingParamChecks = [null, '', undefined]` to choose explicitly how you want un-set params to be handled in your actions.  For example, if you want to allow explicit `null` values in a JSON payload but not `undifined`, you can now opt-in to that behavior.  This is what `action.inputs.x.required = true` will check against.
 
