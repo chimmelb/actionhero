@@ -72,6 +72,9 @@ exports.default = {
         // options to pass to the query parser
         // learn more about the options @ https://github.com/hapijs/qs
         queryParseOptions: {},
+        //option to use the node-proxywrap library when creating a web server (useful for web sockets when behind AWS ELB)
+        //Read more here: https://github.com/daguej/node-proxywrap
+        useProxyProtocol: false
       }
     }
   }

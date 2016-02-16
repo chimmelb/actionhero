@@ -38,14 +38,28 @@ var initialize = function(api, options, next){
   server.start = function(next){
     if(options.secure === false){
       var http = require('http');
-      server.server = http.createServer(function(req, res){
-        handleRequest(req, res);
-      });
+      if( options.useProxyProtocol ){
+        var proxyHttp = require('proxywrap').proxy(http);
+        server.server = proxyHttp.createServer(function(req, res){
+          handleRequest(req, res);
+        });
+      } else {
+        server.server = http.createServer(function(req, res){
+          handleRequest(req, res);
+        });
+      }
     } else {
       var https = require('https');
-      server.server = https.createServer(api.config.servers.web.serverOptions, function(req, res){
-        handleRequest(req, res);
-      });
+      if( options.useProxyProtocol ){
+        var proxyHttps = require('proxywrap').proxy(https);
+        server.server = proxyHttps.createServer(api.config.servers.web.serverOptions, function(req, res){
+          handleRequest(req, res);
+        });
+      } else {
+        server.server = https.createServer(api.config.servers.web.serverOptions, function(req, res){
+          handleRequest(req, res);
+        });
+      }
     }
 
     var bootAttempts = 0

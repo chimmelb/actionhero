@@ -17,6 +17,7 @@ npm-debug.log
 
 # Site
 site/build/*
+_site
 
 # Redis
 dump.rdb
