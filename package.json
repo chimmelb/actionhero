@@ -79,7 +79,7 @@
   "scripts": {
     "postinstall": "echo 'To generate a new actionhero project, run \"node ./node_modules/.bin/actionhero generate\"'",
     "help": "node ./bin/actionhero help",
-    "test": "cross-env NODE_ENV=test mocha",
+    "test": "cross-env NODE_ENV=test mocha --grep 'Utils'",
     "pretest": "standard",
     "start": "node ./bin/actionhero"
   }
